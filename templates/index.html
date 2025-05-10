@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🎬 Movie Recommendation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body style="font-family: 'Playfair Display', serif; background-color: #1a1a1a; padding: 40px; color: #ffffff;">
+
+  <div style="max-width: 600px; margin: auto; background: #1a1a1a; padding: 30px; border-radius: 12px; box-shadow: 0 0 18px #f53809;">
+    <h1 style="text-align:center; color: #f53809; font-family: 'Cinzel', serif;">🍿 Movie Recommendation 🍿</h1>
+
+    <form method="POST">
+      <label style="color: #00e6ac; font-family: 'Cinzel', serif;">🎭 Choose a Genre:</label><br>
+      <select name="category" required style="width:100%; padding: 10px; margin-top: 6px; margin-bottom: 16px; background-color: #3a3a3a; color: #fff; border: 1px solid #555; border-radius: 6px; font-family: 'Playfair Display', serif;">
+        <option value="1">Drama & Emotion</option>
+        <option value="2">Entertainment</option>
+        <option value="3">Thriller & Mystery</option>
+      </select><br>
+
+      <label style="color: #00e6ac; font-family: 'Cinzel', serif;">⭐ Minimum Rating (1–10):</label><br>
+      <input type="number" name="rating" min="1" max="10" required style="width:100%; padding: 10px; margin-top: 6px; margin-bottom: 16px; background-color: #3a3a3a; color: #fff; border: 1px solid #555; border-radius: 6px; font-family: 'Playfair Display', serif;"><br>
+
+      <label style="color: #00e6ac; font-family: 'Cinzel', serif;">⏱️ Minimum Runtime (minutes):</label><br>
+      <input type="number" name="runtime" min="0" required style="width:100%; padding: 10px; margin-top: 6px; margin-bottom: 20px; background-color: #3a3a3a; color: #fff; border: 1px solid #555; border-radius: 6px; font-family: 'Playfair Display', serif;"><br>
+
+      <button type="submit" style="width:100%; padding: 14px; background-color: #f53809; color: white; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; font-family: 'Cinzel', serif;">
+        🎥 Recommend a Movie!
+      </button>
+    </form>
+
+    {% if movie %}
+    <div style="margin-top: 30px; padding: 20px; background-color: #fff9db; border-left: 6px solid #f7c948; border-radius: 8px; color: #2c2c2c; font-family: 'Playfair Display', serif;">
+      <h2 style="margin-top: 0; color: #c0392b; font-family: 'Cinzel', serif;">🎉 {{ movie['original_title'] }}</h2>
+      <p><strong>📝 Tagline:</strong> {{ movie['tagline'] }}</p>
+      <p><strong>📖 Overview:</strong> {{ movie['overview'] }}</p>
+      <p><strong>⏰ Runtime:</strong> {{ movie['runtime'] }} minutes</p>
+      <p><strong>⭐ Rating:</strong> {{ movie['vote_average'] }}</p>
+      <p><strong>🔥 Popularity:</strong> {{ movie['popularity'] }}</p>
+    </div>
+    {% endif %}
+  </div>
+
+</body>
+</html>
